@@ -1,3 +1,5 @@
 # Summary
 
-- [Introduction](./introduction.md)
+- [Introduction](./Introduction.md)
+- [Architecture](./Architecture.md)
+- [Glossary](./Glossary.md)
