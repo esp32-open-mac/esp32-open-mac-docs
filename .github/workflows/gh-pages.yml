@@ -1,0 +1,50 @@
+name: Github Pages
+
+on: [push, pull_request]
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup mdBook
+        uses: jontze/action-mdbook@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          use-mermaid: true
+
+      - name: Setup Toml Cli
+        run: cargo install toml-cli
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Site URL
+        run: toml set book.toml output.html.site-url "${{ steps.pages.outputs.base_path }}"
+
+      - name: Build
+        run: mdbook build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: book/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
