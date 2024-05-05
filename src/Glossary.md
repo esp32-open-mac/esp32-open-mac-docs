@@ -3,6 +3,7 @@
 | Short term  | Meaning | Notes |
 | -- | -- | -- |
 | MAC | Medium Access Control | This is context dependent |
+| PHY | Physical Layer | |
 | RF | Radio frequency | |
 | ISM Band | Industrial Scientific and Medical Band | The frequency band, in which WiFi, BT and IEEE 802.15.4 operate, is the 2.4GHz ISM BAND |
 | WLAN | Wireless Local Area Network | This is defined in IEEE 802.11 |
