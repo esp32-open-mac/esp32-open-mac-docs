@@ -23,4 +23,4 @@ Data is shared between these two, in the form of a digital I/Q signal (In-phase 
 
 The hardware on the ESP32 is controlled by proprietary blobs, which are interfaced with through a shallow API.
 
-The mentioned blobs include a complete proprietary RTOS used to manage different tasks and events.
+The mentioned blobs range in complexity depending on the peripheral they control. WiFi baseband seems to be comprised from a couple of FreeRTOS tasks while Bluetooth baseband appears to include an scheduler, events, many tasks and message echange mechanisms.

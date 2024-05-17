@@ -9,4 +9,4 @@ The WiFi peripheral on the ES32 is controlled by two FreeRTOS tasks, one of whic
 
 They interface with each other through a number of message queues, on top of which an `ioctl`-interface exists.
 
-Espressif chose a SoftMAC architecture for the ESP32, with only ACKing implemented in hardware.
+Espressif chose a mostly SoftMAC architecture for the ESP32, with ACKing and MAC address filtering implemented in hardware.
